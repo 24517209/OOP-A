@@ -1,37 +1,23 @@
+// Part 2 - Child Class: General Practitioner
 public class GeneralPractitioner extends HealthProfessional {
-    private int YearsOfExperience;
+    private String clinicLocation;
 
+    // Default constructor
     public GeneralPractitioner() {
         super();
+        this.clinicLocation = "Unknown Location";
     }
 
-    public GeneralPractitioner(int Id, String Name, String Specialty, String BadgeNumber, int YearsOfExperience) {
-        super(Id, Name, Specialty, BadgeNumber);
-        this.YearsOfExperience = YearsOfExperience;
+    // Parameterized constructor
+    public GeneralPractitioner(int id, String name, String clinicLocation) {
+        super(id, name, "General Practitioner");
+        this.clinicLocation = clinicLocation;
     }
 
-    public int GetYearsOfExperience() {
-        return YearsOfExperience;
-    }
-
-    public void SetYearsOfExperience(int YearsOfExperience) {
-        this.YearsOfExperience = YearsOfExperience;
-    }
-
+    // Method to display health professional details
     @Override
-    public void PrintDetails() {
-        super.PrintDetails();
-        System.out.printf("%-20s: %s%n", "Type", "General Practitioner");
-        System.out.printf("%-20s: %d years%n", "Years of Experience", YearsOfExperience);
-    }
-
-    @Override
-    public String GetSpecializationDetails() {
-        return "General health care with " + YearsOfExperience + " years of experience.";
-    }
-
-    @Override
-    public String GetNameAndSpecialty() {
-        return GetName() + " (General Medicine)";
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Clinic Location: " + clinicLocation);
     }
 }
