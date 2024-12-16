@@ -1,70 +1,39 @@
+// Part 4 - Appointment Class
 public class Appointment {
-    private String PatientName;
-    private String PatientMobile;
-    private String PatientCondition;
-    private String PreferredTimeSlot;
-    private HealthProfessional Doctor;
+    private String patientName;
+    private String patientMobile;
+    private String timeSlot;
+    private HealthProfessional doctor;
 
+    // Default constructor
     public Appointment() {
+        this.patientName = "Unknown";
+        this.patientMobile = "Unknown";
+        this.timeSlot = "00:00";
+        this.doctor = null;
     }
 
-    public Appointment(String PatientName, String PatientMobile, String PatientCondition, String PreferredTimeSlot, HealthProfessional Doctor) {
-        this.PatientName = PatientName;
-        this.PatientMobile = PatientMobile;
-        this.PatientCondition = PatientCondition;
-        this.PreferredTimeSlot = PreferredTimeSlot;
-        this.Doctor = Doctor;
+    // Parameterized constructor
+    public Appointment(String patientName, String patientMobile, String timeSlot, HealthProfessional doctor) {
+        this.patientName = patientName;
+        this.patientMobile = patientMobile;
+        this.timeSlot = timeSlot;
+        this.doctor = doctor;
     }
 
-    public String GetPatientName() {
-        return PatientName;
+    // Method to display appointment details
+    public void displayAppointment() {
+        System.out.println("Patient Name: " + patientName);
+        System.out.println("Patient Mobile: " + patientMobile);
+        System.out.println("Time Slot: " + timeSlot);
+        if (doctor != null) {
+            System.out.println("Doctor Details:");
+            doctor.displayDetails();
+        }
     }
 
-    public void SetPatientName(String PatientName) {
-        this.PatientName = PatientName;
-    }
-
-    public String GetPatientMobile() {
-        return PatientMobile;
-    }
-
-    public void SetPatientMobile(String PatientMobile) {
-        this.PatientMobile = PatientMobile;
-    }
-
-    public String GetPatientCondition() {
-        return PatientCondition;
-    }
-
-    public void SetPatientCondition(String PatientCondition) {
-        this.PatientCondition = PatientCondition;
-    }
-
-    public String GetPreferredTimeSlot() {
-        return PreferredTimeSlot;
-    }
-
-    public void SetPreferredTimeSlot(String PreferredTimeSlot) {
-        this.PreferredTimeSlot = PreferredTimeSlot;
-    }
-
-    public HealthProfessional GetDoctor() {
-        return Doctor;
-    }
-
-    public void SetDoctor(HealthProfessional Doctor) {
-        this.Doctor = Doctor;
-    }
-
-    public void PrintAppointmentDetails() {
-        System.out.println("Appointment Details:");
-        System.out.printf("%-20s: %s%n", "Patient Name", PatientName);
-        System.out.printf("%-20s: %s%n", "Patient Mobile", PatientMobile);
-        System.out.printf("%-20s: %s%n", "Patient Condition", PatientCondition);
-        System.out.printf("%-20s: %s%n", "Preferred Time Slot", PreferredTimeSlot);
-        System.out.println("Doctor Details:");
-        Doctor.PrintDetails();
-        System.out.printf("%-20s: %s%n", "Specialization Details", Doctor.GetSpecializationDetails());
-        System.out.println("------------------------------------------------------------");
+    // Getter for patient mobile (used in appointment cancellation)
+    public String getPatientMobile() {
+        return patientMobile;
     }
 }
